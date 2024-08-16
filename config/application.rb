@@ -23,6 +23,13 @@ module MarvellApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
+    # Load .env file in development and test environments
+    if Rails.env.development? || Rails.env.test?
+      require 'dotenv/load' # Loads .env immediately
+      # or
+      require 'dotenv/rails' # Loads .env when the application starts
+    end
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
