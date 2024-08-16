@@ -1,0 +1,17 @@
+<div class="index-container">
+
+  <div class="search-container">
+    <%= image_tag 'marvel_logo.png', alt: 'Marvel Logo' %>
+    <%= form_tag(comics_index_path, method: :get, class: "search-bar", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Comics", onkeydown: "if (event.key === 'Enter') { this.form.submit(); }" %>
+    <% end %>
+  </div>
+
+  <div class="comics-grid">
+    <% @comics.each do |comic| %>
+      <%= render partial: 'comic', locals: { comic: comic } %>
+    <% end %>
+  </div>
+
+  <%= paginate @comics %>
+</div>

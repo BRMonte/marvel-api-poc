@@ -11,6 +11,7 @@ gem "sprockets-rails"
 gem 'httparty'
 
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'kaminari'
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -65,4 +66,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-

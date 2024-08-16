@@ -1,0 +1,15 @@
+<div class="index-container">
+
+  <div class="search-container">
+    <h1 class="title">Marvel</h1>
+    <%= form_tag(comics_index_path, method: :get, class: "search-bar") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Comics" %>
+      <%= submit_tag "Search" %>
+    <% end %>
+  </div>
+
+  <div class="comics-grid">
+  </div>
+
+</div>
+
