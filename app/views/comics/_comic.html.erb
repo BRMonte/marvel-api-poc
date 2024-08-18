@@ -1,3 +1,9 @@
 <div class="comic-item">
   <img src="<%= comic_thumbnail(comic) %>" alt="comic thumbnail" class="comic-image">
+
+  <%= render partial: 'favorite', locals: { comic: comic } %>
+
+  <div class="comic-name-tag">
+    <%= get_title(comic) %>
+  </div>
 </div>

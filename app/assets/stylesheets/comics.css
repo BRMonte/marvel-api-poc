@@ -21,12 +21,15 @@ body {
 }
 
 .comic-item {
+  position: relative;
+  display: inline-block;
   height: 300px;
   padding: 10px;
   text-align: center;
 }
 
 .comic-image {
+  display: block;
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -55,14 +58,13 @@ body {
   margin-right: 5px;
 }
 
-.pagination {
+/* .pagination {
   width: 78%;
   display: flex;
   justify-content: space-between;
-}
+} */
 
-.pagination .prev a,
-.pagination .next a {
+/* .prev a, .next a {
   display: inline-block;
   padding: 10px 20px;
   margin: 0 5px;
@@ -71,4 +73,81 @@ body {
   font-size: 24px;
   font-weight: bolder;
   text-decoration: none;
+} */
+
+.pagination {
+  width: 80%;
+  height: 15%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.next_page, .previous_page {
+  flex: 0 1 auto;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  padding: 5px;
+  height: 25px;
+  text-decoration: none;
+  color: red;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.previous_page.disabled, .next_page.disabled {
+  color: gray;
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* FAVORITE  */
+.favorite-toggle {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  text-decoration: none;
+}
+
+.favorite-icon {
+  width: 30px;
+  height: 30px;
+  transition: color 0.3s ease;
+  background-color: transparent;
+  border-radius: 90%;
+}
+
+.favorite-icon {
+  color: greenyellow;
+}
+
+.favorite-toggle.favorite-fill .favorite-icon {
+  background-color: red;
+}
+
+.favorite-icon:hover {
+  background-color: red;
+}
+
+/* NAME TAG  */
+.comic-name-tag {
+  visibility: hidden;
+  min-height: 30px;
+  width: 80%;
+  border: 1px solid black;
+  background-color: whitesmoke;
+  color: black;
+  text-align: center;
+  padding: 5px;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.comic-item:hover .comic-name-tag {
+  visibility: visible;
 }
