@@ -1,0 +1,7 @@
+<div id="comics-container" class="comics-grid">
+  <% @comics.each do |comic| %>
+    <%= render partial: 'comic', locals: { comic: comic } %>
+  <% end %>
+</div>
+
+<%= will_paginate @comics, :page_links => false %>

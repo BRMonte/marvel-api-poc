@@ -11,7 +11,7 @@ gem "sprockets-rails"
 gem 'httparty'
 
 gem 'dotenv-rails', groups: [:development, :test]
-gem 'kaminari'
+gem 'will_paginate', '~> 4.0'
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
