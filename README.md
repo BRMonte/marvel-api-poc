@@ -32,7 +32,7 @@ This README documents the Marvel api challenge.
 ## Running the app
 Clone this repo:
 ```
-$ git clone git@github.com:BRMonte/street-bees-challenge.git
+$ git clone git@github.com:{USER_NAME}/street-bees-challenge.git
 ```
 Install all dependancies:
 ```
