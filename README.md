@@ -15,6 +15,7 @@ This README documents the Marvel api challenge.
 ```
 - This is a Rails 7 monolith app
 - It handles external API calls with httparty gem
+- The external API request is encapsulated in a service object
 - To improve performance the API's response is cached using loew-level caching technique
 - The favorite/upvote logic is done with cookies to avoid implementing a more robust authentication system
 - The app has test coverage built with Rspec gem
