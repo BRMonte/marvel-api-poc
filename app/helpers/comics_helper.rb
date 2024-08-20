@@ -1,4 +1,6 @@
 module ComicsHelper
+  PLACEHOLDER = 'https://lightwidget.com/wp-content/uploads/localhost-file-not-found-480x480.avif'.freeze
+
   def comic_thumbnail(comic)
     return get_thumbnail(comic) if has_thumbnail?(comic)
 
@@ -12,26 +14,27 @@ module ComicsHelper
   private
 
   def has_thumbnail?(comic)
-    return false unless comic.key?('thumbnail')
+    return false unless comic && comic.key?('thumbnail')
     !comic['thumbnail']['path'].include?('image_not_available')
   end
 
   def get_thumbnail(comic)
-    return 'Not found' unless comic.key?('thumbnail')
+    return PLACEHOLDER unless comic && comic.key?('thumbnail')
     "#{comic['thumbnail']['path']}.#{comic['thumbnail']['extension']}"
   end
 
   def has_images?(comic)
+    return false unless comic
     !comic['images'].empty?
   end
 
   def get_images(comic)
-    return unless comic.key?('images')
+    return PLACEHOLDER unless comic && comic.key?('images')
     "#{comic['images']['path']}.#{comic['images']['extension']}"
   end
 
   def get_title(comic)
-    return 'Not found' unless comic.key?('title')
+    return 'Not found' unless comic && comic.key?('title')
     comic['title']
   end
 end
