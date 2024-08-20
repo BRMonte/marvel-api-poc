@@ -8,7 +8,9 @@ class ComicsController < ApplicationController
   end
 
   def favorite
+    session[:favorites] ||= []
     id = params[:id]
+
     session[:favorites].include?(id) ? session[:favorites].delete(id) : session[:favorites] << id
 
     head :ok

@@ -12,6 +12,7 @@ gem 'httparty'
 
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'will_paginate', '~> 4.0'
+gem 'pry', '~> 0.14.2'
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -53,7 +54,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
-  gem "rspec"
+  gem "rspec-rails"
+  gem "webmock"
 end
 
 group :development do
