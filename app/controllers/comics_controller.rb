@@ -1,8 +1,9 @@
 class ComicsController < ApplicationController
+
   def index
     session[:favorites] ||= []
 
-    @comics = results()
+    @comics = results
     @comics = paginate(@comics)
   end
 
