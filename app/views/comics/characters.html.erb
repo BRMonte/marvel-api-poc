@@ -1,0 +1,10 @@
+<h1>Search Marvel Characters</h1>
+
+<%= form_with url: characters_path, method: :get, local: true do |form| %>
+  <%= form.text_field :name, placeholder: "Enter character name" %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<% if @character.present? %>
+  <%= render partial: 'character', locals: { character: @character } %>
+<% end %>

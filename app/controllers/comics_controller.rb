@@ -7,6 +7,15 @@ class ComicsController < ApplicationController
     @comics = paginate(@comics)
   end
 
+  def characters
+    return unless params[:name]
+
+    cache_key = "character_#{params[:name].downcase}"
+    @character = Rails.cache.fetch(cache_key, expires_in: 12.hours) do
+      FetchCharacterService.new.call(params[:name])
+    end
+  end
+
   def favorite
     session[:favorites] ||= []
     id = params[:id]

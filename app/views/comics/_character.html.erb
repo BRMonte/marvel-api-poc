@@ -1,0 +1,13 @@
+<div class="comic-item">
+  <% if @character.success %>
+    <img src="<%= @character.thumbnail %>" alt="comic thumbnail" class="comic-image">
+  <% else %>
+    <img src="https://lightwidget.com/wp-content/uploads/localhost-file-not-found-480x480.avif" alt="comic thumbnail" class="comic-image">
+  <% end %>
+
+    <div class="comic-name-tag">
+      <p><%= @character.id %></p>
+      <p><%= @character.name %></p>
+      <p><%= @character.description %></p>
+    </div>
+</div>
