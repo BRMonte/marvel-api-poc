@@ -1,6 +1,6 @@
-<%= link_to favorite_comics_path(comic['id']),
+<%= link_to favorite_comics_path(comic[:id]),
             remote: true,
             data: { turbo_method: "patch" },
-            class: "favorite-toggle #{'favorite-fill' if is_favorite?(comic['id'])}" do %>
+            class: "favorite-toggle #{'favorite-fill' if is_favorite?(comic[:id])}" do %>
   <%= image_tag 'heart-svgrepo-com.svg', alt: 'Favorite comics', class: 'favorite-icon' %>
 <% end %>

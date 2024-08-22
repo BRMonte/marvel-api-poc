@@ -4,23 +4,34 @@ class FetchComicBooksService
 
   include MarvelApi
 
+  FALLBACK = []
+
   def call
-    marvel_api
+    fetch_comics
   end
 
   private
 
-  def marvel_api
-    fallback = []
+  def fetch_comics
     ts, digest_hash, key = MarvelApi.credentials.values_at(:timestamp, :digest_hash, :api_key)
     url = "#{MarvelApi::BASE_URL}#{MarvelApi.endpoint(:comics)}?ts=#{ts}&apikey=#{key}&hash=#{digest_hash}"
 
     begin
       response = HTTParty.get(url)
-      response.success? ? response : fallback
+      handle_response(response)
     rescue => e
       Rails.logger.error("API error: #{e.message}")
-      fallback
+      FALLBACK
+    end
+  end
+
+  def handle_response(response)
+    if response.success?
+      results = response['data']['results']
+
+      results.map { |c| ComicBookParserService.new(c).parse }
+    else
+      FALLBACK
     end
   end
 end
