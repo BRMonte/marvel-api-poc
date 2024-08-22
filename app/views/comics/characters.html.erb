@@ -1,0 +1,14 @@
+<div class="index-container">
+  <div class="search-container">
+    <%= link_to root_path do %>
+      <%= image_tag 'marvel_logo.png', alt: 'Marvel Logo' %>
+    <% end %>
+
+    <%= form_with url: characters_path, method: :get, local: true, html: { class: 'search-bar', id: 'search-form' } do |form| %>
+      <%= form.text_field :name, placeholder: "Search character" %>
+    <% end %>
+  </div>
+  <% if @character.present? %>
+    <%= render partial: 'character', locals: { character: @character } %>
+  <% end %>
+</div>

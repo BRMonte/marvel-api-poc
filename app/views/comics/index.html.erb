@@ -5,8 +5,8 @@
       <%= image_tag 'marvel_logo.png', alt: 'Marvel Logo' %>
     <% end %>
 
-    <%= form_tag(root_path, method: :get, class: "search-bar", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Comics", onkeydown: "if (event.key === 'Enter') { this.form.submit(); }" %>
+    <%= form_with url: characters_path, method: :get, local: true, html: { class: 'search-bar', id: 'search-form' } do |form| %>
+      <%= form.text_field :name, placeholder: "Search character" %>
     <% end %>
   </div>
 
