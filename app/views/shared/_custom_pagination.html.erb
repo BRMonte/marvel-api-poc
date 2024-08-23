@@ -1,9 +1,0 @@
-<div class="custom-pagination">
-  <% if @comics.previous_page %>
-    <%= link_to '← Previous', comics_index_path(page: @comics.previous_page), class: 'previous' %>
-  <% end %>
-
-  <% if @comics.next_page %>
-    <%= link_to 'Next →', comics_index_path(page: @comics.next_page), class: 'next' %>
-  <% end %>
-</div>
