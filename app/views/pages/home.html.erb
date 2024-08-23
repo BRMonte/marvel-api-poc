@@ -1,0 +1,13 @@
+<div class="index-container">
+  <%= turbo_frame_tag :marvel_data, src: comics_path, loading: :lazy do %>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="loading-ring hidden justify-content-center align-items-center py-1">
+          <div class="spinner-border spinner-border-sm" role="status">
+            <h3 class="loading sr-only">Loading...</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

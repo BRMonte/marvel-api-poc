@@ -1,0 +1,5 @@
+<div class="character-container">
+  <% if @character.present? %>
+    <%= render partial: 'character', locals: { character: @character } %>
+  <% end %>
+</div>

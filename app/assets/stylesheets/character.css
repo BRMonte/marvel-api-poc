@@ -1,3 +1,9 @@
+.character-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .character-item {
   margin-top: 30px;
   height: 50%;

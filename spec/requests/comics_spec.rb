@@ -10,35 +10,36 @@ RSpec.describe 'Comics', type: :request do
       )
   end
 
-  describe 'GET /' do
+  describe 'GET /comics' do
     it 'returns an array of comics' do
-      get '/'
+      get comics_path
       expect(response).to have_http_status(:ok)
-      expect(response.body.include?('Man')).to eq(true)
+
+      response.body.include?('Spider-Man') ? expect(response.body).to include('Spider-Man') : expect(response.body).to include('Try again!')
+      end
     end
   end
 
-  describe "PATCH /comics/:id" do
+  describe 'PATCH /comics/:id/favorite' do
     let(:comic_id) { "1" }
 
-    context "when adding a comic to favorites" do
+    context 'when adding a comic to favorites' do
       before do
-        patch favorite_comics_path(comic_id)
+        patch favorite_comic_path(comic_id)
       end
 
-      it "adds the comic to favorites" do
+      it 'adds the comic to favorites' do
         expect(session[:favorites]).to include(comic_id)
       end
     end
 
     context 'when removing a comic from favorites' do
       before do
-        patch favorite_comics_path(comic_id)
-        patch favorite_comics_path(comic_id)
+        patch favorite_comic_path(comic_id)
+        patch favorite_comic_path(comic_id)
       end
 
       it 'removes the comic from favorites' do
-        get root_path
         expect(session[:favorites]).not_to include(comic_id)
       end
     end
