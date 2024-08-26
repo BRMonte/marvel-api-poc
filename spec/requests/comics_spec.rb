@@ -1,22 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe 'Comics', type: :request do
+  let(:response_body) do
+    { 'data' => { 'results' => [{ 'id' => 1, 'title' => 'Spider-Man', 'images' => [] }] } }
+  end
+
+  let(:comics_response) { instance_double(HTTParty::Response, body: response_body, success?: true) }
+
   before do
-    stub_request(:get, %r{https://gateway.marvel.com/v1/public/comics})
-      .to_return(
-        status: 200,
-        body: { 'data' => { 'results' => [{ 'id' => 1, 'title' => 'Spider-Man', 'images' => [] }] } }.to_json,
-        headers: { 'Content-Type' => 'application/json' }
-      )
+    allow(HTTParty).to receive(:get).and_return(response_body)
   end
 
   describe 'GET /comics' do
     it 'returns an array of comics' do
       get comics_path
       expect(response).to have_http_status(:ok)
-
-      response.body.include?('Spider-Man') ? expect(response.body).to include('Spider-Man') : expect(response.body).to include('Try again!')
-      end
+      expect(JSON.parse(response.body)['data']['results'].first['title']).to eq('Spider-Man')
     end
   end
 
